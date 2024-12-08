@@ -120,7 +120,8 @@ ks_result
 #' 以程式回答 hsb2.csv 的編碼為何
 
 hsb2.encoding <- local({
-  encoding_info <- stringi::stri_enc_detect(paste(hsb2, collapse = "\n"))
-  encoding_info[[1]]$Encoding[1]
+  library(readr)
+  encoding_info <- guess_encoding("hsb2.csv")
+  encoding_info$encoding[1]
 })
 hsb2.encoding
